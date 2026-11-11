@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fn1()">提示框</button>
+    <button onclick="fn2()">确认框</button>
+    <button onclick="fn3()">输入框</button>
+
+    <script>
+
+        function fn1(){
+            //提示框
+            alert('这是一个对话框')
+        }
+        function fn2(){
+            //确认框:两个按钮(确认、取消)
+            let result = confirm('确认要删除该数据吗')
+            if(result){
+                //用户确定
+                console.log('第一个分支',result)
+            }else{
+                console.log('第二个分支',result)
+            }
+
+        }
+        function fn3(){
+            //输入框：接收用户输入
+            let result = prompt('请输入姓名')
+            if(result){
+                console.log('第一个分支',result)
+            }else{
+                console.log('第二个分支',result)
+            }
+        }
+    </script>
+</body>
+</html>

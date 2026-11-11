@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象创建</title>
+</head>
+<body>
+    
+    <script>
+        //使用字面量的方式创建对象
+        let obj1={}
+        let obj2={x:1,y:2}
+        let obj3={
+            name:"javascript编程指南",
+            price:200,
+            "book desc":"简介",
+            ['abc'+123]:'',
+            author:{
+                name:'张三',
+                age:20
+            }
+        }
+        //基于构造函数创建对象：构造函数一般首字母大写
+        function Person(name,age){
+            //使用this把属性绑定到基于该构造函数创建的对象上
+            this.name=name;
+            this.age=age;
+            this.eat=function(){
+                console.log(`${this.name}正在吃饭。。。。`)
+            }
+        }
+        let p1 =new Person('张三',20)
+        let p2 =new Person('李四',19)
+        p1.sex='男'
+        p2.sex='女'
+        p1.eat()
+        p2.eat()
+        console.log(p1)
+        console.log(p2)
+
+
+        //基于原型的方式创建对象：
+        //原型：基于现有对象创建一个新对象，现有对象就是新对象的原型
+        let computer={
+            memory:'16g',
+            cpu:'3.2G',
+            hdd:'4T'
+        }
+
+        let labtop=Object.create(computer)
+        labtop.size='12'//自由属性
+        console.log(labtop.memory)
+        console.log(labtop.cpu)
+        console.log(labtop.hdd)
+        console.log(labtop.size)
+        console.log(labtop)
+
+        //基于类(Class)创建对象
+        //
+        class User{
+            //定义构造器
+            constructor(name,age){
+                this.name=name
+                this.age=age
+                this.study=function(){
+                    console.log(`${this.name}正在吃饭。。。。`)
+                }
+            }
+        }
+        let u1 =new User('李四',20)
+        let u2 = new User('王五',19)
+        u1.study()
+        u2.study()
+        console.log(u1)
+        console.log(u2)
+
+    </script>
+</body>
+</html>

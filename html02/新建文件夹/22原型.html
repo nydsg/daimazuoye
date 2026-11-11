@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //原型：js中，给其他对象共享属性的对象
+        //所有的对象都可以作为其他对象的原型
+        let obj1={
+            x:1,
+            y:1
+        }
+        //根据obj1创建一个新对象，则obj1就是obj2的原理
+        //obj2继承obj1的属性
+        let obj2 = Object.create(obj1)
+        console.log(obj2.x)//继承属性
+
+        //访问原型：获取、设置原型
+        //获取对象原型
+        //1 使用Object.getPrototypeOf()获取对象原型
+        let obj3 = Object.getPrototypeOf(obj2)//=>obj1
+        console.log(obj3)
+
+        //2 同隐藏属性：__proto__也可以获取对象属性
+        console.log(obj2.__proto__)//=>
+
+        //设置/修改对象原型
+        //1 使用Object.setPrototypeOf()设置对象的原型
+        let obj4={
+            a:3,
+            b:4
+        }
+        Object.setPrototypeOf(obj2,obj4)
+        console.log(obj2.x)//=>undefined
+        console.log(obj2.a)//=>继承属性
+        console.log(obj2.__proto__)
+
+        //2 直接修改隐藏属性__proto__
+        obj2.__proto__={
+            aa:123,
+            bb:234
+        }
+        console.log(obj2.aa)
+
+        //原型与构造函数
+        //每个函数都有一个原型
+        //构造函数有一个prototype属性，指向构造函数的原型
+        function Person(){
+
+        }
+        console.log('Person()默认原型',Person.prototype)//=>{}
+        let p1 = new Person()
+        console.log('p1的原型',p1.__proto__)//=>{}
+        //使用构造函数创建的对象，
+        // 该对象的原型等于构造函数的原型
+        console.log(p1.__proto__ == Person.prototype)//=>true
+        //使用Person()创建的对象会继承Person()的原型的属性和方法
+        Person.prototype.name='张三'
+        Person.prototype.age=19
+        Person.prototype.sex = '男'
+        let p2 = new Person()
+        console.log(p2.name)
+
+        //构造函数、对象实例、原型之间的关系
+        //构造函数有一个属性prototype,指向构造函数的原型
+        //构造函数的原型有一个constructor的属性，反指向构造函数
+        //实例对象的原型(__proto__),指向创建该对象的构造函数的原型
+        //实例对象和构造函数之间没有直接关系
+        p1 = Object.create(Person.prototype)
+        console.log(p2.__proto__.constructor)//=>Person()
+
+        //使用字面量创建的对象，默认原型--->Object()的原型
+        let obj10 = {
+
+        }
+        console.log(obj10.__proto__.constructor)//=>Object()
+        console.log(obj10.__proto__==Object.prototype)
+
+        //原型链：原型的原型，构成一个链
+        //作用:js使用原型链进行对象的属性/方法的访问操作
+        //假如一个对象访问一个属性，先检查对象本身是否存在该属性
+        //如果对象本身不存在该属性，则会检查对象的原型
+        //如果对象的原型也不存在该属性，沿着原型链，继续往上查找
+        //如果不存在该属性，返回undefined
+        //如果链条中某个节点存在该属性，则可正常使用
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           //=====================
+        //与其他语言相比，JavaScript中函数的this关键字表现略有不同
+// 在绝大多数情况下，this的值由函数的调用方式决定了(运行时进行绑定)。this不能在执行期间被赋值，
+// 并且在每次函数被调用时this的值也可能会不同
+// this的值取决于this出现的上下文(context)环境，JavaScript有三种上下文环境:
+// 全局上下文
+// 函数上下文
+// 类上下文(见后续草节)
+
+//==this出现在全局上下文==>window
+console.log(this)
+
+
+//this出现在函数上下文
+function fn1(){
+    console.log(this)
+}
+
+//1 函数作为普通函数执行
+//this指向函数执行的上下文对象(window)
+
+console.log('函数作为普通函数执行this:')
+fn1() //this=>
+
+//2 函数作为对象方法运行
+//this指向运行该方法(函数)的对象
+let obj1 = {
+    method1:fn1
+}
+let obj2 ={
+    method2:fn1
+}
+console.log('函数作为对象方法运行this:')
+obj1.method1() //this->obj1
+obj2.method2() //this->obj2
+
+//3 函数作为构造函数使用
+//this指向使用该构造函数创建的对象实例
+function User(name){
+    this.name=name
+    console.log(this)
+}
+console.log('函数作为构造函数使用this')
+let u1 = new User('张三') //this=>u1
+let u2 = new User('李四') //this=>u2
+
+//4 函数通过call/apply被间接使用,
+//this指向传给apply/call方法的第一个参数，后面参数用来入参
+function fn4(){
+    console.log(this)
+}
+fn4.call({a:1,b:2},'x','y') //this->{a:1,b:2}
+fn4.apply({x:1,y:2},[]) //this->{x:1,y:2}
+
+//5 箭头函数中的this
+//箭头函数中this从箭头函数的作用域链上一层继承
+let obj4={
+    method1:function(){
+        console.log(this)
+    },
+    method2:()=>{
+    console.log(this)
+}
+}
+console.log('箭头函数中的this')
+obj4.method1() //this->obj4
+obj4.method2() //this->window
+
+
+    </script>
+</body>
+</html>

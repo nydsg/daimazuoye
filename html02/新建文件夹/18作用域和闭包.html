@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+
+<script>
+
+    //全局作用域 -- 全局变量
+    let a1 = 123
+    const a2 = 123
+    var a3 = 'abc'
+
+    //函数作用域 -- 局部变量
+    function fn1() {
+        let b1 = 456
+        const b2 = 456
+        var b3 = 'zxc'
+
+        console.log(a1,b1)
+    }
+
+    fn1()
+    //console.log(b1,b2) //局部变量 -- 超出作用域范围
+
+    //代码块作用域 -- 局部变量
+    //使用let/const声明变量 具有块级作用域
+    //使用var声明变量 就没有这东西
+    {
+        let c1 = 789
+        const c2 = 789
+        var c3 = 'asd'
+
+        console.log(c1, c2, c3)
+    }
+    console.log(c3) //变量污染
+
+
+    //函数作为另外一个函数的结果值 返回 会可能造成变量的作用域超出范围
+    function fn2() {
+        let a4 = 789
+        function fn3() {
+            console.log('在函数fn3内使用a4 ',a4)
+        }
+        console.log('在函数fn2内使用a4 ',a4)
+       return fn3()
+    }
+
+    let fn3_1 = fn2()
+    //闭包概念 当一个函数(fn3)作为另外一个函数(fn2)的结果返回
+    //js把函数(fn3)和其引用的外部变量(a4)捆绑起来
+    //捆绑起来的这些东西== >闭包
+   fn3_1
+
+    //闭包的作用
+    //使用闭包模拟对象的私有方法
+    //定义一个函数 专门生成一个系列的计数器
+    const makeCounter = function() {
+        let privateCount = 0;
+        function changeVal(val) {
+            privateCount += val;
+        }
+        let obj = {
+            //定义三个方法 方法内部引用函数的变量和函数
+            //就是三个闭包
+            increment:function() {
+                changeVal(1)
+            },
+            decrement:function() {
+                changeVal(-1)
+            },
+            value:function() {
+                return privateCount
+            }
+        }
+        return obj
+    }
+
+    //使用makeCounter生成一系列对象
+    //对象的方法就是一个个闭包
+    //对象的方法都是私有的
+    let counter1 = makeCounter();
+    let counter2 = makeCounter();
+
+    counter1.increment();
+    counter1.increment();
+    counter2.decrement();
+
+    console.log(counter1.value())
+    console.log(counter2.value())
+
+</script>
+</body>
+</html>

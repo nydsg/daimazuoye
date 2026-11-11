@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级管理</title>
+</head>
+<body>
+    <table border="1" align="center" width="80%" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>班级管理&nbsp;
+                <button onclick="add()">添加</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table border="1" align="center" width="80%" cellspacing="0" cellpadding="5">
+                    <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>名称</td>
+                            <td>简介</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody id="mytbody">
+                        <!-- 这里是空的，必须点“添加”才会生成内容 -->
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        // 添加一行
+        function add() {
+            let clazz = prompt('请输入班级名称：', '软件240');
+            if (clazz == null || clazz.trim() === '') return;
+            
+            let desc = prompt('请输入班级简介：', '暂无简介');
+            if (desc == null) desc = '';
+
+            let tbody = document.getElementById('mytbody');
+            let length = tbody.rows.length;
+
+            let newRow = tbody.insertRow(length);
+
+            let cell0 = newRow.insertCell(0);
+            cell0.innerText = length + 1;
+
+            let cell1 = newRow.insertCell(1);
+            cell1.innerText = clazz;
+
+            let cell2 = newRow.insertCell(2);
+            cell2.innerText = desc;
+
+            let cell3 = newRow.insertCell(3);
+            
+            // 使用反引号插入按钮
+            cell3.innerHTML = `
+                <button onclick="edit(this)">修改</button>&nbsp;
+                <button onclick="del(this)">删除</button>
+            `;
+        }
+
+        // 修改一行
+        function edit(obj) {
+            let cell = obj.parentElement; 
+            let row = cell.parentElement; 
+
+            let nameCell = row.cells[1]; 
+            let descCell = row.cells[2]; 
+
+            let newName = prompt('修改班级名称：', nameCell.innerText);
+            if (newName == null || newName.trim() === '') return; 
+
+            let newDesc = prompt('修改班级简介：', descCell.innerText);
+            if (newDesc == null) return;
+
+            nameCell.innerText = newName;
+            descCell.innerText = newDesc;
+        }
+
+        // 删除一行
+        function del(obj) {
+            if (confirm('确认删除该数据吗？')) {
+                let cell = obj.parentElement; 
+                let row = cell.parentElement; 
+                let tbody = document.getElementById('mytbody');
+                
+                tbody.removeChild(row);
+                resetNo(tbody); // 重新编号
+            }
+        }
+
+        // 重新编号
+        function resetNo(tbody) {
+            for (let i = 0; i < tbody.rows.length; i++) {
+                tbody.rows[i].cells[0].innerText = i + 1;
+            }
+        }
+    </script>
+</body>
+</html>

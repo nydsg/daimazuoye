@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" checked name="sex" value="0">男&nbsp;
+    <input type="radio" name="sex" value="1">女&nbsp;
+    <input type="radio" name="sex" value="2">其他&nbsp;
+    <br>
+    <button onclick="findByname()">通过name</button>
+    <script>
+        function findByname(){
+            let list = document.getElementsByName("sex")
+            for(let item of list){
+                //判断哪个radio有checked属性
+                if(item.checked){
+                    console.log(item.checked)
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

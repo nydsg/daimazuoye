@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="changeImg()">切换图片</button>
+    <img  id="img1" src="https://computer.czjtu.edu.cn/images/jsjlogo.png" alt="1" width="500" height="80">
+
+
+    <script>
+        function changeImg(){
+            let obj = document.getElementById('img1')
+            if(obj.src == 'https://computer.czjtu.edu.cn/images/jsjlogo.png'){
+                obj.src='https://em.czjtu.edu.cn/images/jglogo.png'
+                obj.width = 400
+                obj.height = 60
+            }else{
+                obj.src='https://computer.czjtu.edu.cn/images/jsjlogo.png'
+                obj.width=500
+                obj.height = 80
+            }
+        }
+    </script>
+</body>
+</html>

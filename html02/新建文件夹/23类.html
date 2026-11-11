@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //类定义方式
+        //1 类声明
+        class MyClazz1{
+            
+        }
+
+        //2 类表达式
+        const MyClazz2 = class{
+            
+        }
+
+        //类定义的内容
+        class Animal{
+            //构造器
+            constructor(name){
+                //实例成员：在构造器中定义的属性/方法
+                this.name=name;
+                this.whoIs = function(){
+                    console.log(this.name)
+                }
+                this.whereIs = function(){
+                    console.log('这是一个实例方法')
+                }
+            }
+            //原型成员：在类块定义的方法()
+            whereIs(){
+                console.log('这是一个原型方法')
+            }
+            //访问器属性：getter/setter
+            set type(type){
+                this._type = type
+            }
+            get type(){
+                return this._type
+            }
+            //类成员：static
+            static eat(){
+                console.log('正在吃东西。。。。')
+            }
+            static color = '白色'
+        }
+        //访实例成员
+        const obj1 = new Animal('小白兔')
+        obj1.whoIs()
+        obj1.whereIs()
+        //访问原型方法
+        Animal.prototype.whereIs()
+        //访问器属性
+        obj1.type = '哺乳动物'
+        console.log(obj1.type)
+        //静态成员
+        Animal.eat()
+        console.log(Animal.color)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<input type="text" id="exp">
+<button onclick="cal()">计算</button>
+<br>
+<span id="result"></span>
+
+<br><br>
+<button onclick="start1()">开始1</button>
+<button onclick="stop1()">停止1</button>
+<div id="time1">0</div>
+
+<br><br>
+<button onclick="start2()">开始2</button>
+<button onclick="stop2()">停止2</button>
+<div id="time2">0</div>
+    <script>
+        //eval函数：把字符串转成js可执行的脚本
+        function cal(){
+            //取出输入
+            let exp = document.getElementById("exp").value
+            //计算
+            let result = eval(exp)
+            //输出
+            document.getElementById("result").innerHTML=result
+        }
+
+        //setTimeout:在指定时间后执行一段程序
+        let x =0
+        let meter1
+        function count1(){
+            x=x+1
+            document.getElementById('time1').innerHTML=x
+            meter1 = setTimeout('count1()',1000)
+        }
+            function start1(){
+                count1()
+            }
+            function stop1(){
+                clearTimeout(meter1)
+            }
+        
+            //setInterval:在指定间隔时间后，反复执行指定的程序
+            let y =0
+            let meter2
+            function count2(){
+                y=y+1
+                document.getElementById('time2').innerText=y
+            }
+            function start2(){
+                meter2=setInterval('count2()',1000)
+            }
+            function stop2(){
+                clearTimeout(meter2)
+            }
+            //待优化，每次点开始有叠加！！！
+    </script>
+</body>
+</html>

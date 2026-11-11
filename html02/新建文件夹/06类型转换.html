@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类型转换</title>
+</head>
+<body>
+    <script>
+        //隐式转换
+        let str1 = 'abc'
+        let num1 = 123
+        let bool1 = true
+        let bool2 = false
+
+        console.log('str1+num1=',str1+num1)
+        console.log('str1+bool1=',str1+bool1)
+        console.log('str1+bool2=',str1+bool2)
+        console.log('num1+bool1=',num1+bool1)
+        console.log('bool2+bool1=',bool2+bool1)
+
+        //显示转换
+        //Number()
+        //true--->1 false--->0
+        console.log('Number("123")='+Number('123'))
+        console.log('Number("0o12")='+Number('0o12'))
+        console.log('Number("0x12")='+Number('0x12'))
+        console.log('Number("")='+Number(''))
+        console.log('Number("abc")='+Number('abc'))
+
+        //parseInt()函数-->转整型
+        //从第一个数值/+/-开始处理，一直到非数值类型结束
+        console.log('parseInt("123abc456")=',parseInt("123abc456"))
+        //如果第一个为非数值类型，则直接返回--->NaN
+        console.log('parseInt("abc1234")=',parseInt("abc1234"))
+        //''-->NaN
+        console.log('parseInt("")=',parseInt(""))
+        //"123.45" 123.45-->整数
+        console.log('parseInt("123.45")=',parseInt("123.45"))
+        console.log('parseInt(0o12)=',parseInt(0o12))
+        console.log('parseInt("0x12")=',parseInt("0x12"))
+        console.log('parseInt(0o12)=',parseInt("12",8))
+
+        //parseFloat -->浮点数
+        
+
+        
+
+        
+</script>
+</body>
+</html>

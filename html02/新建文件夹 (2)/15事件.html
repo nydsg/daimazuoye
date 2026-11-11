@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button id="btn1" onclick="fn1()">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button id="btn3">按钮3</button>
+    <button id="btn4">按钮4</button>
+
+    <script>
+        //事件处理程序注册方式
+        //1 html on属性
+        function fn1(){
+            console.log('按钮1的事件')
+        }
+        //2 dom元素事件
+        let btn = document.getElementById('btn2')
+        btn2.onclick = function(){
+            console.log('按钮2的事件')
+        }
+
+        //3 事件监听器：addEventListener
+        let btn3 = document.getElementById("btn3")
+        btn3.addEventListener('click',function(){
+            console.log('btn3')
+        })
+
+        //事件对象
+        let btn4 = document.getElementById("btn4")
+        btn4.addEventListener('click',function(event){
+            console.log(event)
+        })
+    </script>
+</body>
+</html>

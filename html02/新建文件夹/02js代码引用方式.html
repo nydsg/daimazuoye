@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js代码引用方式</title>
+</head>
+<body>
+    <button onclick="fn3()"
+    >按钮3</button>
+    
+    <button
+    onclick="javascript:alert('通过html事件方式执行js代码')"
+    >
+    测试</button>
+
+
+    <!-- 1 嵌入式 -->
+     <script>
+        //1 js区分大小写
+        let a=1
+        let A=2
+        //2 或略空格
+        let b =3 ;let t          = 3
+        //3 使用分号;或者回车换行符作为语句结束
+        let c=3;let d=4
+        let e =5
+        let f =10
+        //5 字面量
+        //数值字面量
+        let num1 =123
+        //字符串
+        let str1 ='abc'
+        //布尔字面量 true/false
+        let bool1=true
+        let bool2 =false
+        //对象
+        let obj1 = {}
+        //数组
+        let arr =[]
+
+     </script>
+     <!-- 2 引入式 
+      引入外部js文件
+      2.1引入本地js文件-->
+      <!-- 相对路径 -->
+      <script src="../02js/my.js"></script>
+      <!-- 绝对路径 -->
+       <script src="/02js/my.js"></script>
+       <!-- 2.2引用外部web应用的js文件:http url -->
+        <script src="http://www.baidu.com/xxx/xx.js"></script>
+</body>
+</html>

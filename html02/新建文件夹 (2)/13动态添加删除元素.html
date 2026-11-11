@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center" id="div1">
+        <p>段落1111111</p>
+    </div>
+    <p align="center">
+        <button onclick="add()">添加</button>
+        <button onclick="del()">删除</button>
+    </p>
+    <script>
+        function add(){
+            //新建一个元素
+            let obj = document.createElement('p')
+            obj.innerText='新建段落。。。。'
+            //把元素放进容器
+            let div = document.getElementById('div1')
+            div.appendChild(obj)
+
+        }
+        function del(){
+            let div = document.getElementById('div1')
+            let list = div.querySelectorAll('p')
+            if(list.length>0){
+                div.removeChild(list[list.length-1])
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象数值函数</title>
+</head>
+<body>
+    
+    <script>
+        //对象：一堆数据和功能的集合(属性/方法)
+        //内置对象：Array,Date,Function,Math......
+
+        //自定义对象
+        let obj1 = new Object()
+        obj1.name='张三'
+        obj1['age']=20
+        obj1.eat=function(){
+            console.log(`${this.name}正在吃饭。。。。。。`)
+        }
+        obj1.eat()
+        
+        let obj2={
+            name:'李四',
+            age:20,
+            eat:function(){
+                console.log(`${this.name}正在吃饭。。。。。。`)
+            }
+        }
+        obj2.eat()
+
+        //数组：可以存储任意数据类型
+        let arr1 = new Array(123,45,'abc','123',true,{x:1,y:2})
+        for(let item of arr1){
+            console.log(item,typeof item)
+        }
+        let arr2 =[123,45,'abc','123',true,{x:1,y:2}]
+
+        //函数：function
+        function fn1(a,b,c){
+            console.log(a+b+c)
+        }
+
+        fn1(1,2,3)
+
+        function fn2(a,b,c){
+            let result = a+b+c
+            return result
+            console.log('hello')
+        }
+
+        let result = fn2(1,2,3)
+        console.log(result)
+
+    </script>
+</body>
+</html>

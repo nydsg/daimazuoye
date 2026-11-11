@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        //1 基于原型的继承
+        //1.1 显示的原型继承
+        let obj1 = {
+            x:1,
+            y:1
+        }
+        let obj2 = {
+            a:3,
+            b:4
+        }
+        //obj1默认的原型是-->Object()的原型
+        console.log(obj1.__proto__)
+
+        //1.2.1 使用Object.setPrototypeOf()修改对象的原型
+        //则对象的继承关系会发生改变
+        Object.setPrototypeOf(obj1,obj2)
+        //obj1的原型指向了obj2
+        console.log('obj1修改后的原型：',obj1.__proto__)
+        //obj1继承obj2属性方法
+        console.log(obj1.a)//继承属性
+        //1.2.2 直接使用Object.create()方法，根据现有的对象
+        //创建一个新对象，则新对象继承现有对象的属性方法
+        let obj3={
+            a:100,
+            b:100
+        }
+        let obj4 = Object.create(obj3)
+        //则obj4继承obj3的属性方法
+
+        //1.2 隐式的原型继承
+        function SuperType(){
+            this.name = '父类型'
+            this.action = function(){
+                console.log(this.name+'的行为')
+            }
+        }
+        function SubType(){
+            this.subName = '子类型'
+            this.subAction= function(){
+                console.log(this.subName+'的行为')
+            }
+        }
+        let obj5 = new SubType()
+        //obj5.action()
+        //obj5默认的原型==>SubType()的原型
+        console.log('obj5的原型',obj5.__proto__)
+        //修改SubType()的原型，使之指向SubType()的一个实例对象
+        SubType.prototype = new SuperType()
+        //则使用SubType()创建的对象 的 原型，
+        // 也会跟着改变，指向new SuperType()
+        //继承关系方式改变
+        let obj6 = new SubType()
+        //obj6的原型--->new SuperType()
+        console.log('obj6的原型',obj6.__proto__)
+        //obj6继承了SuperType()定义的属性和方法
+
+
+        //2 基于类的继承 extends
+        class Animal{
+            constructor(name){
+                this.name = name
+                this.speed = 0
+            }
+            run(speed){
+                this.speed = speed
+                console.log(`${this.name}开始奔跑，速度为${this.speed}`)  
+            }
+            stop(){
+                this.speed = 0
+                console.log(`${this.name}停止了`)
+            }
+        }
+        //定义子类，继承父类
+        class Rabbit extends Animal{
+            hide(){
+                console.log(`${this.name}藏起来了`)
+            }
+        }
+
+        const rabbit = new Rabbit('小白兔')
+        rabbit.run(5)//继承属性方法
+        rabbit.hide()//自有属性
+        rabbit.stop()//继承属性
+    </script>
+</body>
+</html>

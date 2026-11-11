@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 补上两个类，changeStyle2 才有东西可切 */
+        .style1 {
+            color: #ffffff;
+            background-color: #333333;
+        }
+        .style2 {
+            color: #000000;
+            background-color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <!-- 初始 class 用 style1，和 JS 里的判断对上 -->
+    <h1 id="id1" class="style1">沧州交通学院</h1>
+
+    <button onclick="changeStyle1()">改变内联样式</button>
+    <button onclick="changeStyle2()">改变类样式</button>
+
+    <script>
+        // 方式一：直接改 style（内联样式）
+        function changeStyle1() {
+            let obj = document.getElementById('id1');
+            obj.style.color = 'red';
+            obj.style.backgroundColor = '#000000';
+        }
+
+        // 方式二：切换 className（类样式）
+        function changeStyle2() {
+            let obj = document.getElementById('id1');   // id2 → id1
+            if (obj.className == 'style1') {
+                obj.className = 'style2';
+            } else {
+                obj.className = 'style1';
+            }
+        }
+    </script>
+</body>
+</html>

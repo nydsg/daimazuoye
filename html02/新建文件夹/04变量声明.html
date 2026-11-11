@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量声明</title>
+</head>
+<body>
+    
+
+
+    <script>
+        let var1 = 123
+        let var2 = 'abc'
+
+        let var3 //=>自动获得一个值:undefined
+        console.log("var3="+var3)
+
+        //let关键字声明的变量，不能重复声明
+        let var4 ='abc';
+        //let var4 =123;//==>报语法错误
+
+        //const声明常量：声明常量时，必须初始化
+        const PI =3.14159
+        //PI =3.14//=>不能对常量重新复制:语法错误
+
+        //如果const声明一个常量对象：那么限制只对对象本身有用
+        const obj1={
+            a:3,
+            b:4,
+        }
+        // obj1={
+        //     a:1,
+        //     b:2,
+        // }
+        //但是可以修改常量对象的属性值
+        obj1.a=11
+        obj1.b=10
+        obj1.c=4
+        console.log(obj1)
+
+        //var :建议不再使用
+        var var6 = 'abc'
+        var var7= 123
+        //var可以重复声明变量
+        var var7 = 'abc'
+
+        //var声明的变量只有全局作用域和函数局部作用域
+        //没有代码块作用域
+        function fn1(){
+            var var8 = 123;
+
+        }
+        // console.log(var8)//=>语法错误：变量未声明
+        {
+            var var9 =123
+            console.log("代码块内使用var9="+var9)
+        }
+            console.log("代码块内使用var9="+var9)
+
+        //如果未经声明，直接使用一个变量，JavaScript是允许的：该变量会穿透作用域限制，成为全局变量
+        function fn2(){
+            var10 = 1234
+        }
+        fn2()
+        console.log('var10='+var10)//全局变量污染
+
+        //var声明的变量：js解释时，会把声明部分提升到该变量作用域顶部
+        //但是赋值部分还在原来位置
+        //叫变量提升(只有var才有这种情况)
+        function fn3(){
+            console.log('var11='+var11)
+            var var11 = 1234
+            console.log('var11='+var11)
+        }
+        //上述函数等价于下方，JavaScript下fn3在解释时，会把var声明赋值的语句拆成两部分
+        function fn33(){
+            var var11
+            console.log('var11='+var11)
+            var var11 = 1234
+            console.log('var11='+var11)
+        }
+    </script>
+</body>
+</html>

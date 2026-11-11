@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        .style1{
+            color: red;
+        }
+        .style2{
+            color: blue;
+        }
+        .style3{
+            color: fuchsia;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <p name="test1" class="style1">111111</p>
+        <p name="test1" class="style2">222222</p>
+        <p name="test2" class="style3">333333</p>
+        </div>
+        <p name="test1" class="style1">444444</p>
+        <button onclick="findBySelector()">selector方法</button>
+        <button onclick="findBySelectorAll()">selectorAll方法</button>
+    <script>
+        function findBySelector(){
+            //返回符合条件的第一个元素
+            //id选择器
+            let obj1 = document.querySelector('#div1')
+            console.log(obj1.innerHTML)
+            //标记选择器
+            let obj2 = document.querySelector('p')
+            console.log(obj2.innerHTML)
+            //类选择器
+            let obj3 = document.querySelector('.style1')
+            console.log(obj3.innerHTML)
+            //元素name属性
+            let obj4 = document.querySelector('p[name="test1"]')
+            console.log(obj4.innerHTML)
+        }
+        function findBySelectorAll(){
+            //querySelectorAll:返回符合条件的所有元素
+            //id选择器
+            let list1 = document.querySelectorAll('#div1')
+            for(let item of list1){
+                console.log(item.innerHTML)
+            }
+            //标记选择器
+            let list2 = document.querySelectorAll('p')
+            for(let item of list2){
+                console.log(item.innerHTML)
+            }
+            //类选择器
+            let list3 = document.querySelectorAll('.style1')
+            for(let item of list3){
+                console.log(item.innerHTML)
+            }
+            //元素name属性
+            let list4 = document.querySelectorAll('p[name="test1"]')
+            for(let item of list4){
+                console.log(item.innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>

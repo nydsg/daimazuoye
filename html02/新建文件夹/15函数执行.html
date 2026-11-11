@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //1 作为普通函数执行
+        function fn1(a,b){
+            return a+b
+        }
+        let result1 = fn1(1,2)
+        console.log(result1)
+        
+        //2 作为对象的方法执行
+        let obj1 = {
+            name:'张三',
+            age:20,
+            study:function(){
+                console.log(`${this.name}正在学习。。。`)
+            }
+        }
+        obj1.study()
+        //3 作为构造函数,可以创建一个新对象
+        function User(name,age){
+            this.name=name
+            this.age=age
+            this.study = function(){
+                console.log(`${this.name}正在学习...`)
+            }
+        }
+        let u1 = new User('李四',19)
+        u1.study()
+
+        //4 通过函数对象的call/apply方法，简介执行函数
+        function fn2(a,b){
+            return a+b
+        }
+        //call方法：接收多个参数
+        //第一个参数：想让执行的函数在哪个上下文环境执行
+        // 即作为第一个参数传入(当前例子想让fn2函数在window对象，0)
+        //可以使用this指代window对象
+        //第二个及之后的参数：为传给要执行的函数的实参
+        let result4 = fn2.call(this,3,4)
+        console.log(result4)
+
+        //apply方法：接收两个参数
+        //第一个参数：想让执行的函数在哪个上下文环境执行
+        // 即作为第一个参数传入(当前例子想让fn2函数在window对象，0)
+        //可以使用this指代window对象
+        //第二个及之后的参数：为一个数组，把要传给执行的函数的实参放进一个数组
+        let result5=fn2.apply(this,[3,4])
+        console.log(result5)
+
+        //5 立即执行的函数表达式FFIE
+        (function (a,b){
+            console.log(a,b)
+        })(5,6)
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //forEach方法：迭代数组元素，迭代过程中可以对元素进行处理
+        //forEach接收一个函数，使用该函数对数组元素逐个处理
+        let arr1 = [1,2,3,4,5]
+        let sum=0
+        function fnsum(x){
+            sum+=x
+        }
+        //arr1.forEach(fnsum)//求和
+        arr1.forEach(x=>sum+=x)
+        console.log(sum)
+        //forEch迭代不能中断
+
+
+        //map:接收一个函数(映射函数)
+        //注意对数组元素进行处理，返回一个等长数组
+        let arr2 =[1,2,3,4,5]
+        console.log(arr2)
+        let arr2_1= arr2.map(x=>x*x)
+        //针对稀疏数组，map方法会跳过空元素
+        let arr2_2=[1,,3,,5]
+        console.log(arr2_2)
+        let arr2_3 = arr2_2.map(x=>x*x)
+        console.log(arr2_3)
+        //filter:接收一个函数（过滤函数：是一个断言函数）
+        //对每个元素进行处理，返回符合条件的元素，组成一个新数组
+        let arr3 =[1,2,3,4,5]
+        console.log(arr3)
+        let arr3_1=arr3.filter(x=>x%2==0)
+        console.log(arr3_1)
+        //对于稀疏数组，过滤函数会忽略不处理
+        //可以使用filter处理稀疏数组
+        let arr3_2=[1,,3,,5,6,7,8]
+        let arr3_3=arr3_2.filter(x=>true)
+        console.log(arr3_3)
+        //处理null,undefined
+        let arr3_4=[1,,3,,5,null,7,undefined,9]
+        console.log(arr3_4)
+        let arr3_5=arr3_4.filter(x=>x!==null&&x!==undefined)
+        console.log(arr3_5)
+
+        //reduce 归并方法：接收一个函数(归并函数)，
+        //逐一处理数组元素，最终返回一个结果值
+        let arr4=[1,2,3,4,5]
+        let result1 = arr4.reduce((a,b)=>a+b)
+        console.log(result1)
+        //归并函数的定义
+        //
+
+        let result2= arr4.reduce((a,b)=>{
+            console.log(`a=${a},b=${b}`,a+b)
+            return a+b
+        })
+
+        //reduce()方法有两个参数
+        //reduce()的第一个：归并函数
+        //reduce()的第二个参数(7)
+        //归并函数的参数a,b
+        //第一次迭代：a为reduce的第二个参数(7),b取数组的第一个运算
+        //第二次及之后：a为上一次归并结果,b为数组下一个运算
+        let result3= arr4.reduce((a,b)=>{
+            console.log(`a=${a},b=${b}`,a+b)
+            return a+b
+        },7)//7是规定运算的初始值，第二个参数
+        
+        //push方法：往数组尾部推进一个元素
+        let arr5=['a','b','c']
+        console.log(arr5)
+        arr5.push('k')
+        console.log(arr5)
+
+        //unshift:从数组头部压进一个元素
+        let arr6=['a','b','c']
+        console.log(arr6)
+        arr6.unshift('k')
+        console.log(arr6)
+        //shift:从数组头部移出一个元素,并返回
+        let result6 = arr6.shift()
+        console.log(result6)
+        console.log(arr6)
+
+        //slice方法：抽取一个数组
+        let arr7 = ['a','b','c','d','e','f']
+        console.log(arr7)
+        let arr7_1 = arr7.slice(3,5)
+        console.log(arr7_1)
+        console.log(arr7)
+
+        //splice:模拟对象数组的增删改操作
+        let arr8 = ['a','b','c','d','e','f']
+        console.log(arr8)
+        //模拟删除
+        //第一个参数：指定要删除的位置
+        //第二个参数：指定要删除的个数
+        arr8.splice(2,2)
+        console.log(arr8)
+        //模拟插入
+        //第一个参数：指定要插入的位置
+        //第二个参数：0（意味不删除）
+        //都三个参数：要插入的元素
+        let arr9 = ['a','b','c','d','e','f']
+        console.log(arr9)
+        arr9.splice(2,0,'k')
+        console.log(arr9)
+        //模拟修改
+        //第一个参数：指定要修改的位置
+        //第二个参数：先删除元素
+        //第三个参数：再插入新元素
+        let arr10 = ['a','b','c','d','e','f']
+        console.log(arr10)
+        arr10.splice(2,1,'m')
+        console.log(arr10)
+        //数组解构：把数组元素直接解开赋值给对应变量
+        let arr11 = ['a','b','c','d','e','f']
+        //let first = arr11[0]
+        //let second = arr11[1]
+        let [first,second]=arr11
+        console.log(first)
+        console.log(second)
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+<body>
+    
+
+    <script>
+        //Undefined类型：只有一个值 undefined
+        //使用var let 声明的变量。 未初始化--->undefined
+        let var1
+        console.log('var1='+var1)
+        //注意与未声明变量的区别
+        // console.log('var2='+var2)//语法错误:var未声明
+        //使用typeof对未初始化的变量、以及未声明变量的操作
+        //都返回undefined
+        console.log('typeof var1='+(typeof var1))//=>undefined
+        console.log('typeof var2='+(typeof var2))//=>undefined
+        //undefined值在布尔运算中，作为false值
+        if(var1){
+
+        }else{
+            console.log('var1='+var1)
+        }
+
+        //Null类型：只有一个值null
+        //一般null用于定义一个未初始化的对象
+        //非null对象都为true
+        let obj1 = null
+        console.log('typeof obj1='+(typeof obj1))
+        let obj2 = {}//==>该对象已经被初始化：值为一个空对象
+        console.log('obj1='+obj1)
+        console.log('obj2=')
+        console.log(obj2)
+
+        console.log('var1==obj1'+(var1 == obj1))//true
+
+        //null在布尔运算中，作为false值
+        if(obj1){
+            //1
+        }else{
+            //2
+            console.log('obj1='+obj1)
+        }
+
+        if(obj2){
+            //1
+            console.log('obj2-1='+obj2)
+        }else{
+            //2
+            console.log('obj2-1='+obj2)
+        }
+
+        //Boolean类型：true/false
+        let bool1 =true
+        let bool2 =false
+        //js 使用Boolean()构造函数显示或隐式把其他数据类型转换成布尔值
+        //非空字符串===>true
+        let str1 = 'abc'
+        console.log('Boolean(str1)='+Boolean(str1))
+        //空字符串==>false
+        let str2 =''
+        console.log('Boolean(str2)='+Boolean(str2))
+        
+        //非0数值==>true
+        //0数值或者NaN===>false
+        let num1 =123
+        let num2 =0
+        console.log('Boolean(num1)='+Boolean(num1),'Boolean(num2)='+Boolean(num2))
+        //除数和被除数都是0
+        let result =0/0//===>NaN
+        //或者尝试把一个非数值类型的字符串转换成一个数值==>NaN
+        let result2 = Number('abc')//===>NaN
+        console.log("result="+result,'result2='+result2)
+        console.log("Boolean(result)="+Boolean(result),'Boolean(result2)='+Boolean(result2))
+
+        //Number类型
+        console.log('0.1+0.2='+(0.1+0.2))
+        console.log(9999999999999999)//>15位长度，可能丢失精度
+
+        //NaN:不是一个数值
+        //0作为除数和被除数-->NaN
+        console.log('0/0='+(0/0))//=>NaN
+        //尝试使用Number()/parseInt()/parseFloat()把非数值字符串转换为数值
+        console.log('parseInt("abc")='+parseInt('abc'))//NaN
+        console.log(parseFloat('ada'))//==>NaN
+        
+        //isNaN():可以判断一个变量是否不是数值//先尝试是否能转成功数值，之后判断 如：true=Number转换后为1
+        console.log('isNaN(123)='+isNaN(123))//false
+        console.log('isNaN("123")='+isNaN('123'))//false
+        console.log('isNaN(NaN)='+isNaN(NaN))//true
+        console.log('isNaN(null)='+isNaN(null))//false（Number(null)=0）
+        console.log('isNaN(undefined)='+isNaN(undefined))//true
+        console.log('isNaN(flase)='+isNaN(false))//false
+        console.log('isNaN(true)='+isNaN(true))//false
+
+        //字符串
+        //3种方式定义字符串
+        let str11 = 'abc'//单引号
+        let str12 = "abc"//双引号
+        let str13 = `abc`//反引号
+        
+        //使用`做特殊字符的转移
+        let str14 =`
+        <div>
+            <div>
+                <a></a>
+            </div>
+        </div>
+        `
+        console.log('str14='+str14)
+
+        //模板字符串：插值运算
+        let str15 = `
+        <div>
+            <div>
+                <a>${str11},${1+1}</a>
+            </div>
+        </div>
+        `
+        console.log('str15='+str15)
+
+        //Object类型：是所有派生对象的基类
+        //定义了一系列方法和属性
+        let obj10 =new Object();
+        obj10.name = '张三'
+        obj10['age']=20
+        
+
+    </script>
+</body>
+</html>

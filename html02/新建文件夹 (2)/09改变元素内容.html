@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1 id="id1">海滨学院</h1>
+<button onclick="changeTxt()">改变文本</button>
+<button onclick="changeHtml()">改变Html</button>
+    <script>
+        function changeTxt(){
+            let obj = document.getElementById('id1')
+            obj.innerText='沧州交通学院'
+        }
+        function changeHtml(){
+            let obj=document.getElementById('id1')
+            obj.innerHTML='<a href="https://www.czjtu.edu.cn">沧州交通学院'
+        }
+    </script>
+</body>
+</html>

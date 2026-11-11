@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表达式程序语句</title>
+</head>
+<body>
+    
+    <script>
+        //普通等==:js会尝试把比较的两个操作数进行类型转换匹配，再比较
+        console.log('123=="123"  ',123=='123')
+        //严格等===:不会做类型转换，类型不一样，直接返回false
+        console.log('123==="123"  ',123==="123")
+
+        //in 操作符：判断左操作数是否在用操作数中
+        let obj1 ={x:1,y:1}
+        console.log('"x" in obj1', "x" in obj1)
+        console.log('"z" in obj1', "z" in obj1)
+        //对于数值，判断给定的索引位置是否有错
+        let arr1 = [5,6,,7,8]
+        console.log('0 in arr1',0 in arr1)
+        console.log('2 in arr1',2 in arr1)
+
+        //instanceof 判断实例是否是某种类型
+        let d = new Date()
+        console.log('d instanceof Date',d instanceof Date)
+        console.log('d instanceof object',d instanceof Object)
+
+        //eval():可以把字符串作为js语句执行
+
+        eval("let a=1; let b=2; console.log(a+b);")
+
+        //for
+        let arr2=[5,6,7,8]
+        for(let item in arr2){
+            console.log(item+" "+arr2[item])
+        }
+        let obj2 ={x:1,y:2}
+        for(let item in obj2){
+            console.log(item+" "+obj2[item])
+        }
+        //for
+    </script>
+</body>
+</html>

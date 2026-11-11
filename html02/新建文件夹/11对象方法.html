@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //重定义toString方法
+    let obj1={
+        x:1,
+        y:2,
+        toString:function (){
+            return`
+            {
+            "x":${this.x},
+            "y":${this.y}
+        }`
+        },
+        valueOf:function (){
+            return this.x+this.y
+        }
+    }
+    console.log(obj1)
+    console.log(obj1.valueOf())
+
+</script>
+</html>

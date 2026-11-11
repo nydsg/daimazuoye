@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1 使用字面量创建数组
+    arr=[]//=>空数组
+    //js数组可以放置任意类型的数据
+    let arr2=[1,2,true,null,undefined,{},[1,2]]
+    console.log(arr2)
+    //数组可以是稀疏的
+    let arr3 = [1,,2,'a',,'c']
+    console.log(arr3)
+    console.log(arr3.length)//稀疏数组，长度>元素个数
+
+    //2 使用Array()构造函数创建数组
+    //2.1 不传入参数
+    let arr4 = new Array()//=>[]
+    //2.2 传入一个参数
+    let arr5 = new Array(3)//=>得到长度为3的数组
+    console.log(arr5)
+    console.log(arr5.length)
+    //2.3 传入2个及以上的整数，以及非整数类型
+    //则传入的参数作为数组元素
+    let arr6 = new Array(2,3)//[2,3]
+    let arr7 = new Array('a')//['a']
+
+    //3 使用扩展操作符....把可迭代对象/数组扩展成新数组元素
+    let arr8 = [1,2,3]
+    let arr9 = ['a','b','c',...arr8]
+    console.log(arr9)
+    //可迭代对象
+    let str1='sfsdadwa14341'
+    let arr10 = [...str1]
+    console.log(arr10)
+
+    //4 工厂方法
+    //4.1 Array.of()
+    let arr11= Array.of()//=>[]
+    let arr12 = Array.of(4)//=>[4]
+    let arr13=Array.of(2,3)//=>[2,3]
+
+    //4.2 Array.from():从已有数组创建新数组
+    let arr14= Array.from(arr13)//=>[2,3]
+    let arr15 =Array.from('avmhdf')//=>
+    console.log(arr14)
+    console.log(arr15)
+    //from()
+    //第一个：数组或可迭代对象
+    //第二个：函数
+    let arr16=[1,2,3,4,5]
+    let arr17= Array.from(arr16,x=>x*x)
+    console.log(arr17)
+
+    //多维数组：使用数组的数组模拟
+    //定义数组的数组
+    let books = new Array(4)//长度为4的数组
+    //往数组books的每个位置放进一个长度为2的数组
+    books[0]=new Array(2)
+    books[1]=new Array(2)
+    books[2]=new Array(2)
+    books[3]=new Array(2)
+    books[4]=new Array(2)
+    
+    //往数组里面放数据
+    (books[0])[0]='书名'
+    (books[0])[1]=''
+
+    (books[1])[0]='价格'
+    (books[1])[1]=''
+
+    (books[2])[0]='出版社'
+    (books[2])[1]=''
+
+    (books[3])[0]='书名'
+    (books[3])[1]='书名2'
+
+    (books[4])[0]='书名'
+    (books[4])[1]='书名2'
+
+    //取数据
+    for(let i=0; i<books.length;i++){
+        for(let j=0;j<books[i].length;j++){
+            console.log(books[i][j])
+        }
+    }
+
+    //数组操作：同[],下标
+    let arr18 = ['a','b','c','d']
+
+    //获取数组元素
+    console.log(arr18[0])
+    //修改:如果指定的下标存在，则为修改
+    arr18[2]='K'
+    console.log(arr18)
+    ////添加：如果指定的下标不存在，则新添加一个元素
+    arr18[6]='f'
+    console.log(arr18)
+
+    //遍历数组
+    //简单for循环
+    //for-in
+    //for-of
+    
+
+
+
+
+
+
+
+
+</script>
+</html>

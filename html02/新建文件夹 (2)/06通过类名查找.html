@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过类名查找</title>
+    <style>
+        .style1{
+            color: red;
+        }
+        .style2{
+            color: blue;
+        }
+        .style3{
+            color: fuchsia;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <p class="style1">111111</p>
+        <p class="style2">222222</p>
+        <p class="style3">333333</p>
+    </div>
+    <p class="style1">444444</p>
+    <button onclick="findByClassName()">通过类名</button>
+
+    <script>
+        function findByClassName(){
+            let list = document.getElementsByClassName('style1')
+            for(let item of list){
+                console.log(item.innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>

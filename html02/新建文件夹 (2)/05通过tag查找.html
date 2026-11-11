@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="div1">
+        <p>11111</p>
+        <p>22222</p>
+        <p>33333</p>
+    </div>
+    <p>444444</p>
+
+    <button onclick="findByTag()">通过Tag</button>
+
+    <script>
+        function findByTag(){
+            let list1 = document.getElementsByTagName('p')
+            for(let item of list1){
+                console.log(item.innerText)
+            }
+            let obj = document.getElementById('div1')
+            let list2 = obj.getElementsByTagName('p')
+            for(let item of list2){
+                console.log(item.innerText)
+                alert(`${item.innerHTML}`)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <div id="div1">
+
+    </div>
+    <script>
+        //直接往html写入内容
+        document.writeln('你好！')
+
+        //往html添加元素
+        //创建元素
+        let obj = document.createElement('button')
+        obj.innerText='按钮名称'
+        //往容器写入名称
+        let container = document.getElementById('div1')
+        container.appendChild(obj)
+    </script>
+</body>
+</html>

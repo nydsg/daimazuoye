@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //1 js不检查形参/实参的个数、类型
+        function fn1(a,b){
+            return a+b
+        }
+        let result1_1=fn1(1,2) //=>3
+        //=>语法上正确，只是运算结果可能不符合需求=>NaN
+        let result1_2=fn1(1) //=>NaN
+        let result1_3=fn1(1,2,3) //=>3
+        console.log(result1_1,result1_2,result1_3)
+
+        //2 js函数没有重载
+        //如果有同名的函数，后定义的会覆盖前面的
+        function fn2(a,b,c){
+            return a+b+c
+        }
+        function fn2(a,b,c){
+            return a+b
+        }
+        let result2_1=fn2(1,2,3)
+        let result2_2=fn2(1,2,3)//=>3
+        console.log(result2_1,result2_2)
+
+        //3 参数默认值：可以给形参设置默认值
+        //当调用时，未给形参传值，则使用默认值运算
+        function fn3(a=0,b=0,c=0){
+            return a+b+c
+        }
+        let result3_1 = fn3(1,2,3) //=>6
+        console.log(result3_1)
+        let result3_2 = fn3(1,2) //=>3
+        console.log(result3_2)
+        let result3_3=fn3()//=>0
+        console.log(result3_3)
+        console.log(fn3(1))
+
+        //4 余下参数(rest参数)
+        //当实参个数多于固定形参个数时，可以使用一个rest参数接收
+        function fn4(a,b,...args){
+            let sum=0
+            sum=a+b
+            for(let item of args){
+                sum+=item                
+            }
+            return sum
+        }
+        let result4_1 = fn4(1,2) //=>3
+        console.log(result4_1)
+        let result4_2=fn4(1,2,3,4,5,6)//=>21
+        console.log(result4_2)
+
+        //5 arguments对象
+        //所有非箭头函数默认都有一个arguments对象
+        //可以接收所有传给该函数的实参!
+        function fn5(a,b){
+            console.log(a,b)
+            //arguments对象取函数:[下标]
+            console.log('arguments.length:',arguments.length)
+            for(let item of arguments){
+                console.log(item)
+            }
+            if (arguments[0]){
+                console.log(arguments[0])
+            }
+        }
+        fn5(1,2,3,4,5,6)
+
+        //6 使用扩展操作符...给函数传参
+        function fn6(...args){
+            if(args.length===0){
+                console.log('未传参数')
+                return
+            }
+            let max = args[0]
+            for(let item of args){
+                if(item>max){
+                    max=item
+                }
+            }
+            console.log('最大值:',max)
+        }
+        let arr6=[3,5,3,13,75,34,5]
+        //
+        fn6(arr6[0],arr6[1],arr6[2],arr6[3],arr6[4],arr6[5],arr6[6])
+        //使用...把数组展开，作为函数实参
+        fn6(...arr6)
+        // for(let item of arr6){
+        //     console.log(fn6(item))
+        // }//只是把一个个数传过去
+     
+
+
+
+
+    </script>
+</body>
+</html>
